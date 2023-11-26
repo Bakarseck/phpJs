@@ -5,15 +5,16 @@
 include 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    if (registerUser($username, $email, $password)) {
+    $userId = loginUser($email, $password);
+
+    if ($userId) {
         header('Location: /');
         exit();
     } else {
-        echo 'L\'inscription a échoué.';
+        echo 'Échec de la connexion.';
     }
 }
 
@@ -21,15 +22,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 <div class="content">
-    <h2>Inscription</h2>
+    <h2>Connexion</h2>
     <form action="register.php" method="post">
-        <label for="username">Nom d'utilisateur :</label>
-        <input type="text" name="username" required><br>
         <label for="email">Adresse e-mail :</label>
         <input type="email" name="email" required><br>
         <label for="password">Mot de passe :</label>
         <input type="password" name="password" required><br>
-        <input type="submit" value="S'inscrire">
+        <input type="submit" value="Se Connecter">
     </form>
 </div>
 

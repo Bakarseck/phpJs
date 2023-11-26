@@ -4,3 +4,5 @@ sudo systemctl enable mysql
 sudo mysqld_safe --skip-grant-tables --skip-network
 mysql -u root -p
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
+sudo apt update
+sudo apt install php libapache2-mod-php php-mysql
