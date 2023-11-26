@@ -1,8 +1,8 @@
 -- Table pour stocker les utilisateurs
 CREATE TABLE user (
     id_user INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255)
 );
 

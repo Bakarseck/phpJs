@@ -10,6 +10,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
 
     if (registerUser($username, $email, $password)) {
+        
+        $userId = loginUser($email, $password);
+        session_start();
+        $_SESSION['username'] = $username;
+        $_SESSION['email'] = $email;
+
+        setcookie('username', $username, time() + 3600, '/');
+        setcookie('email', $email, time() + 3600, '/');
+
         header('Location: /');
         exit();
     } else {
